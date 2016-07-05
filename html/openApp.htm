@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+</head>
+<body>
+加载中，请稍候 ...
+<a id="loadAppButton" href="chomecook://jskz/media=test" style="display:none;width:0px;height:0px;"></a>
+</body>
+<script type="text/javascript">
+var iframe = document.createElement('iframe');
+iframe.style.cssText = 'display:none;width:0px;height:0px;';
+document.body.appendChild(iframe);
+
+function loadApp() {
+//     var ua = navigator.userAgent.toLowerCase();
+    var ua = navigator.userAgent;
+        var platform = /MicroMessenger/i.test(ua) ? "weixin" : /Android/i.test(ua) ? "android" : /iPhone|iPad|iPod/i.test(ua) ? "ios" : "pc";
+        var version = "2.4.2";
+        if (platform == "android") {
+            location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.gotokeep.keep";
+        } else if (platform == "ios") {
+            location.href = 'https://itunes.apple.com/app/id952694580';
+        } else if (platform == "weixin") {
+            //location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.gotokeep.keep";
+            alert('在浏览器中打开');
+        } else if (platform == "pc") {
+            location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.gotokeep.keep";
+    }
+}
+var doOpenApp = function() {
+// 	iframe.src = 'chomecook://jskz/action_name=HomePage';
+	setTimeout('loadApp();', 3000);
+	document.getElementById('loadAppButton').click();
+};
+window.onload=function(){
+	doOpenApp();
+};
+
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?695b8e8f9b1a74fbfab38efea45fa3c9";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>
