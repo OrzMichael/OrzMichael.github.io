@@ -83,7 +83,7 @@
 <meta name="description" content="I&apos;m Program。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Michael·Liu">
-<meta property="og:url" content="http://kippies.cn/index.html">
+<meta property="og:url" content="http://kippies.cn/page/2/index.html">
 <meta property="og:site_name" content="Michael·Liu">
 <meta property="og:description" content="I&apos;m Program。">
 <meta name="twitter:card" content="summary">
@@ -269,8 +269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" itemprop="url">
-                  Android使用Google Breakpad进行崩溃日志管理
+                <a class="post-title-link" href="/2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/" itemprop="url">
+                  java 计算时间差，还剩下xx天xx小时xx分xx秒
                 </a>
               
             
@@ -283,8 +283,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-10T19:33:04+08:00" content="2016-07-10">
-              2016-07-10
+            <time itemprop="dateCreated" datetime="2016-06-10T19:19:43+08:00" content="2016-06-10">
+              2016-06-10
             </time>
           </span>
 
@@ -297,8 +297,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -309,8 +309,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/OXS/" itemprop="url" rel="index">
-                    <span itemprop="name">OXS</span>
+                  <a href="/categories/Java/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -325,8 +325,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" itemprop="commentsCount"></span>
+                <a href="/2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -336,7 +336,7 @@
 
           
           
-             <span id="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" class="leancloud_visitors" data-flag-title="Android使用Google Breakpad进行崩溃日志管理">
+             <span id="/2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/" class="leancloud_visitors" data-flag-title="java 计算时间差，还剩下xx天xx小时xx分xx秒">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,13 +359,10 @@
 
       
         
-          <ul>
-<li>开发过程中，最担心的问题就是程序崩溃，而且还不知道崩溃的原因，现在使用Google Breakpad来跟踪崩溃的位置，非常方便；由于目前使用Mac系统开发，Google Breadpad处理Android崩溃日志时需要Linux环境，借助 vagrant 可以非常方便地在Mac使用Ubuntu环境。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ varant ssh</span><br><span class="line">$ cd /vagrant</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install build-essential</span><br><span class="line">$ svn checkout http:<span class="comment">//google-breakpad.googlecode.com/svn/trunk/ google-breakpad-read-only</span></span><br><span class="line">$ cd google-breakpad-read-only</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
-<p>执行完上面的命令将会在<code>google-breakpad-read-only/src/processor</code>目录下生成<code>minidump_stackwalk</code>工具，用于导出crash log.<br><code>google-breakpad-read-only/src/tools/linux/dump_syms</code>目录下生成 dump_syms工具，用于导出符号文件。<br><code>google-breakpad-read-only/src/client/linux</code> 目录下生成 libbreakpad_client.a。</p>
+          <p>计算时间差，还剩下xx天xx小时xx分xx秒</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Handler handler = <span class="keyword">new</span> Handler();</span><br><span class="line">	    Runnable runnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	        <span class="meta">@Override</span></span><br><span class="line">	        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	            setDateInfo(NumberUtil.convertTolong(data.getData().getSubmitDate(), System.currentTimeMillis()), orderDateAndNumber);</span><br><span class="line">	            handler.postDelayed(<span class="keyword">this</span>, <span class="number">1000</span>);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;;</span><br><span class="line">	    runnable.run();</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/#more" rel="contents">
+            <a class="btn" href="/2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -416,8 +413,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/" itemprop="url">
-                  OS X下使用vagrant安装ubuntu环境
+                <a class="post-title-link" href="/2016/05/10/Android的Activity管理/" itemprop="url">
+                  Android的Activity管理
                 </a>
               
             
@@ -430,154 +427,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-10T19:24:05+08:00" content="2016-07-10">
-              2016-07-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/转载/" itemprop="url" rel="index">
-                    <span itemprop="name">转载</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/转载/OSX/" itemprop="url" rel="index">
-                    <span itemprop="name">OSX</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/OS-X下使用vagrant安装ubuntu环境/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/" class="leancloud_visitors" data-flag-title="OS X下使用vagrant安装ubuntu环境">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="安装brew命令工具"><a href="#安装brew命令工具" class="headerlink" title="安装brew命令工具"></a>安装brew命令工具</h4><pre><code>* github：https://github.com/phinze/homebrew-cask
-</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</span><br><span class="line">``` </span><br><span class="line">#### 安装 wget 命令工具</span><br><span class="line"></span><br><span class="line">	查看要安装的版本 http://ftp.gnu.org/gnu/wget/</span><br><span class="line"></span><br><span class="line">#### 下载 wget</span><br><span class="line"></span><br><span class="line">``` java</span><br><span class="line">$ cd ~/Downloads  </span><br><span class="line">$ curl -O http://ftp.gnu.org/gnu/wget/wget-1.15.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="解压-wget"><a href="#解压-wget" class="headerlink" title="解压 wget"></a>解压 wget</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf wget-<span class="number">1.15</span>.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="编译和安装"><a href="#编译和安装" class="headerlink" title="编译和安装"></a>编译和安装</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd wget-<span class="number">1.15</span>/  </span><br><span class="line">$ ./configure --with-ssl=openssl  </span><br><span class="line">$ make  </span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/10/Android输入框EditiText禁止输入Emoji表情符/" itemprop="url">
-                  Android输入框EditiText禁止输入Emoji表情符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-10T19:05:43+08:00" content="2016-07-10">
-              2016-07-10
+            <time itemprop="dateCreated" datetime="2016-05-10T17:42:41+08:00" content="2016-05-10">
+              2016-05-10
             </time>
           </span>
 
@@ -606,8 +457,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/10/Android输入框EditiText禁止输入Emoji表情符/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/Android输入框EditiText禁止输入Emoji表情符/" itemprop="commentsCount"></span>
+                <a href="/2016/05/10/Android的Activity管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/Android的Activity管理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -617,7 +468,7 @@
 
           
           
-             <span id="/2016/07/10/Android输入框EditiText禁止输入Emoji表情符/" class="leancloud_visitors" data-flag-title="Android输入框EditiText禁止输入Emoji表情符">
+             <span id="/2016/05/10/Android的Activity管理/" class="leancloud_visitors" data-flag-title="Android的Activity管理">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -640,22 +491,14 @@
 
       
         
-          <ol>
-<li><p>通过添加EditText的addTextChangedListener()监听来过滤Emoji表情：</p>
-<ul>
-<li>onTextChanged()</li>
-<li>beforeTextChanged()</li>
-</ul>
-</li>
-<li><p>使用方法</p>
-<ul>
-<li>在开发中可能多处会用到过滤Emoji表情符，为了方便使用自定义EditText来实现：</li>
-</ul>
-</li>
+          <h4 id="可能你会遇到这种场景："><a href="#可能你会遇到这种场景：" class="headerlink" title="可能你会遇到这种场景："></a>可能你会遇到这种场景：</h4><ol>
+<li>界面A–&gt;界面B–&gt;…–&gt;界面N，停留在界面N的时候，提交数据，才会把界面N之前的界面A、B… finish掉；</li>
+<li>登录、注册，最后的提交后，直接进入App主界面，这个时候就要把注册界面finish掉；</li>
+<li>等等</li>
 </ol>
-<p><img src="http://img.blog.csdn.net/20150430101855832" alt="输入"><br><img src="http://img.blog.csdn.net/20150430101911416" alt="结果"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;  </span><br><span class="line"><span class="keyword">import</span> java.util.List;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> android.app.Activity;  </span><br><span class="line"><span class="keyword">import</span> android.app.Application;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * activity管理</span><br><span class="line"> * </span><br><span class="line"> * <span class="doctag">@author</span> Liujy</span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KYActivityMannger</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> List&lt;Activity&gt; mList = <span class="keyword">new</span> LinkedList&lt;Activity&gt;();  </span><br><span class="line">    <span class="keyword">private</span> List&lt;Activity&gt; mLogoutList = <span class="keyword">new</span> LinkedList&lt;Activity&gt;();  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> KYActivityMannger instance;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">KYActivityMannger</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> KYActivityMannger <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == instance) &#123;  </span><br><span class="line">            instance = <span class="keyword">new</span> KYActivityMannger();  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     *  add Activity save mList </span><br><span class="line">     * <span class="doctag">@param</span> activity </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;  </span><br><span class="line">        mList.add(activity);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     *  add Activity save mLogoutList </span><br><span class="line">     * <span class="doctag">@param</span> activity </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLogoutActivity</span><span class="params">(Activity activity)</span> </span>&#123;  </span><br><span class="line">        mLogoutList.add(activity);  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     * 退出 </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="keyword">for</span> (Activity activity : mList) &#123;  </span><br><span class="line">                <span class="keyword">if</span> (activity != <span class="keyword">null</span>)  </span><br><span class="line">                    activity.finish();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());  </span><br><span class="line">            System.exit(<span class="number">0</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     * 注销 </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logout</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="keyword">for</span> (Activity activity : mLogoutList) &#123;  </span><br><span class="line">                <span class="keyword">if</span> (activity != <span class="keyword">null</span>)  </span><br><span class="line">                    activity.finish();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">            System.gc();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLowMemory</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>.onLowMemory();  </span><br><span class="line">        System.gc();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/10/Android输入框EditiText禁止输入Emoji表情符/#more" rel="contents">
+            <a class="btn" href="/2016/05/10/Android的Activity管理/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -706,8 +549,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/10/Android 判断程序是否在前台运行/" itemprop="url">
-                  Android 判断程序是否在前台运行
+                <a class="post-title-link" href="/2016/05/07/最新的-java-正则表达式判断手机号，支持虚拟运营商170号段/" itemprop="url">
+                  最新的java正则表达式判断手机号，支持虚拟运营商170号段
                 </a>
               
             
@@ -720,8 +563,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-10T15:31:26+08:00" content="2016-07-10">
-              2016-07-10
+            <time itemprop="dateCreated" datetime="2016-05-07T16:58:19+08:00" content="2016-05-07">
+              2016-05-07
             </time>
           </span>
 
@@ -741,6 +584,18 @@
 
                 
                 
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
 
               
             </span>
@@ -750,8 +605,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/10/Android 判断程序是否在前台运行/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/Android 判断程序是否在前台运行/" itemprop="commentsCount"></span>
+                <a href="/2016/05/07/最新的-java-正则表达式判断手机号，支持虚拟运营商170号段/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/最新的-java-正则表达式判断手机号，支持虚拟运营商170号段/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -761,7 +616,7 @@
 
           
           
-             <span id="/2016/07/10/Android 判断程序是否在前台运行/" class="leancloud_visitors" data-flag-title="Android 判断程序是否在前台运行">
+             <span id="/2016/05/07/最新的-java-正则表达式判断手机号，支持虚拟运营商170号段/" class="leancloud_visitors" data-flag-title="最新的java正则表达式判断手机号，支持虚拟运营商170号段">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -785,7 +640,16 @@
       
         
           
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isTopActivity</span><span class="params">(Activity activity)</span> </span>&#123;  </span><br><span class="line">        String packageName = <span class="string">"com.liujy.android.test"</span>;  </span><br><span class="line">        ActivityManager activityManager = (ActivityManager) activity  </span><br><span class="line">                .getSystemService(Context.ACTIVITY_SERVICE);  </span><br><span class="line">        List&lt;RunningTaskInfo&gt; tasksInfo = activityManager.getRunningTasks(<span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">if</span> (tasksInfo.size() &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">            <span class="comment">// 应用程序位于堆栈的顶层  </span></span><br><span class="line">            <span class="keyword">if</span> (packageName.equals(tasksInfo.get(<span class="number">0</span>).topActivity.getPackageName())) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>国家号码段分配如下：
+　　</p>
+<ul>
+<li>移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188、182</li>
+<li>联通：130、131、132、152、155、156、185、186</li>
+<li>电信：133、153、180、189、177、（1349卫通）</li>
+<li>虚拟：170</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;  </span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;  </span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassPathResource</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMobileNO</span><span class="params">(String mobiles)</span> </span>&#123;  </span><br><span class="line">	　　Pattern p = Pattern.compile(<span class="string">"^((13[0-9])|(15[^4,\\D])|(14[57])|(17[0])|(17[7])|(18[0,0-9]))\\d&#123;8&#125;$"</span>);  </span><br><span class="line">	 	Matcher m = p.matcher(mobiles);  </span><br><span class="line">	 	System.out.println(m.matches()+<span class="string">"---"</span>);  </span><br><span class="line">	  	<span class="keyword">return</span> m.matches();  </span><br><span class="line">　　&#125;  </span><br><span class="line">  </span><br><span class="line">　　<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;  </span><br><span class="line">  </span><br><span class="line">　　    System.out.println(ClassPathResource.isMobileNO(<span class="string">"14738381438"</span>));  </span><br><span class="line">  </span><br><span class="line">　　&#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>版权声明：本文为博主原创文章，未经博主允许不得转载。</code></p>
 
           
         
@@ -835,8 +699,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/08/热更新-Android与Lua相互通信/" itemprop="url">
-                  热更新-Android与Lua相互通信
+                <a class="post-title-link" href="/2016/05/01/hello-world/" itemprop="url">
+                  Hello World
                 </a>
               
             
@@ -849,38 +713,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T20:06:11+08:00" content="2016-07-08">
-              2016-07-08
+            <time itemprop="dateCreated" datetime="2016-05-01T15:31:26+08:00" content="2016-05-01">
+              2016-05-01
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/08/热更新-Android与Lua相互通信/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/热更新-Android与Lua相互通信/" itemprop="commentsCount"></span>
+                <a href="/2016/05/01/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/hello-world/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -890,7 +735,7 @@
 
           
           
-             <span id="/2016/07/08/热更新-Android与Lua相互通信/" class="leancloud_visitors" data-flag-title="热更新-Android与Lua相互通信">
+             <span id="/2016/05/01/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -913,31 +758,12 @@
 
       
         
-          <h3 id="热更新介绍"><a href="#热更新介绍" class="headerlink" title="热更新介绍"></a>热更新介绍</h3><ul>
-<li>什么是热更新？</li>
+          
+            <ul>
+<li>今天，是我诞生的日子 – 2016.05.01。</li>
 </ul>
-<p><code>客户端启动时，主动请求服务端检查版本号，并更新资源到本地。</code></p>
-<ul>
-<li>应用场景：<ul>
-<li>情况一：客户端已经发布了，但突然发现有个比较严重的bug需要修复。这时需要更新客户端的代码（Lua代码）。</li>
-<li>情况二：情人节到了，需要搞个活动，在客户端中营造一个节日氛围。这时，需要更新客户端资源或增加一些功能。</li>
-</ul>
-</li>
-<li>好处：<br><code>不需要重新打包和提交应用到市场等待审核。</code></li>
-</ul>
-<h3 id="Android与Lua相互通信"><a href="#Android与Lua相互通信" class="headerlink" title="Android与Lua相互通信"></a>Android与Lua相互通信</h3><ul>
-<li><p>参考资料：</p>
-<ul>
-<li><a href="http://manual.luaer.cn/">Lua 5.1 在线参考手册</a></li>
-<li><a href="https://github.com/mkottman/AndroLua">开源项目LuaJava</a></li>
-</ul>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/热更新-Android与Lua相互通信/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+
+          
         
       
     </div>
@@ -968,7 +794,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android, 刘俊阳, Michael, Hexo, NexT" />
+  <meta name="keywords" content="Android,Activity,Activity管理,finish," />
 
 
 
@@ -80,15 +80,31 @@
 
 
 
-<meta name="description" content="I&apos;m Program。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Michael·Liu">
-<meta property="og:url" content="http://kippies.cn/archives/2016/07/index.html">
+<meta name="description" content="可能你会遇到这种场景：
+界面A–&amp;gt;界面B–&amp;gt;…–&amp;gt;界面N，停留在界面N的时候，提交数据，才会把界面N之前的界面A、B… finish掉；
+登录、注册，最后的提交后，直接进入App主界面，这个时候就要把注册界面finish掉；
+等等
+
+12345678910111213141516171819202122232425262728293031323334353637383940414">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android的Activity管理">
+<meta property="og:url" content="http://kippies.cn/2016/05/10/Android的Activity管理/index.html">
 <meta property="og:site_name" content="Michael·Liu">
-<meta property="og:description" content="I&apos;m Program。">
+<meta property="og:description" content="可能你会遇到这种场景：
+界面A–&amp;gt;界面B–&amp;gt;…–&amp;gt;界面N，停留在界面N的时候，提交数据，才会把界面N之前的界面A、B… finish掉；
+登录、注册，最后的提交后，直接进入App主界面，这个时候就要把注册界面finish掉；
+等等
+
+12345678910111213141516171819202122232425262728293031323334353637383940414">
+<meta property="og:updated_time" content="2016-07-10T11:57:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Michael·Liu">
-<meta name="twitter:description" content="I&apos;m Program。">
+<meta name="twitter:title" content="Android的Activity管理">
+<meta name="twitter:description" content="可能你会遇到这种场景：
+界面A–&amp;gt;界面B–&amp;gt;…–&amp;gt;界面N，停留在界面N的时候，提交数据，才会把界面N之前的界面A、B… finish掉；
+登录、注册，最后的提交后，直接进入App主界面，这个时候就要把注册界面finish掉；
+等等
+
+12345678910111213141516171819202122232425262728293031323334353637383940414">
 
 
 
@@ -106,7 +122,7 @@
   };
 </script>
 
-  <title> Archive | Michael·Liu </title>
+  <title> Android的Activity管理 | Michael·Liu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -127,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,214 +261,172 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 9 posts in total. Keep on posting.
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" itemprop="url">
-              
-                <span itemprop="name">Android使用Google Breakpad进行崩溃日志管理</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-10T19:33:04+08:00"
-              content="2016-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/" itemprop="url">
-              
-                <span itemprop="name">OS X下使用vagrant安装ubuntu环境</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-10T19:24:05+08:00"
-              content="2016-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/10/Android输入框EditiText禁止输入Emoji表情符/" itemprop="url">
-              
-                <span itemprop="name">Android输入框EditiText禁止输入Emoji表情符</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-10T19:05:43+08:00"
-              content="2016-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/10/Android 判断程序是否在前台运行/" itemprop="url">
-              
-                <span itemprop="name">Android 判断程序是否在前台运行</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-10T15:31:26+08:00"
-              content="2016-07-10" >
-          07-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/08/热更新-Android与Lua相互通信/" itemprop="url">
-              
-                <span itemprop="name">热更新-Android与Lua相互通信</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-08T20:06:11+08:00"
-              content="2016-07-08" >
-          07-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android的Activity管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T17:42:41+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/Android的Activity管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/Android的Activity管理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/10/Android的Activity管理/" class="leancloud_visitors" data-flag-title="Android的Activity管理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="可能你会遇到这种场景："><a href="#可能你会遇到这种场景：" class="headerlink" title="可能你会遇到这种场景："></a>可能你会遇到这种场景：</h4><ol>
+<li>界面A–&gt;界面B–&gt;…–&gt;界面N，停留在界面N的时候，提交数据，才会把界面N之前的界面A、B… finish掉；</li>
+<li>登录、注册，最后的提交后，直接进入App主界面，这个时候就要把注册界面finish掉；</li>
+<li>等等</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;  </span><br><span class="line"><span class="keyword">import</span> java.util.List;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> android.app.Activity;  </span><br><span class="line"><span class="keyword">import</span> android.app.Application;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * activity管理</span><br><span class="line"> * </span><br><span class="line"> * <span class="doctag">@author</span> Liujy</span><br><span class="line"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KYActivityMannger</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> List&lt;Activity&gt; mList = <span class="keyword">new</span> LinkedList&lt;Activity&gt;();  </span><br><span class="line">    <span class="keyword">private</span> List&lt;Activity&gt; mLogoutList = <span class="keyword">new</span> LinkedList&lt;Activity&gt;();  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> KYActivityMannger instance;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">KYActivityMannger</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> KYActivityMannger <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == instance) &#123;  </span><br><span class="line">            instance = <span class="keyword">new</span> KYActivityMannger();  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     *  add Activity save mList </span><br><span class="line">     * <span class="doctag">@param</span> activity </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;  </span><br><span class="line">        mList.add(activity);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     *  add Activity save mLogoutList </span><br><span class="line">     * <span class="doctag">@param</span> activity </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLogoutActivity</span><span class="params">(Activity activity)</span> </span>&#123;  </span><br><span class="line">        mLogoutList.add(activity);  </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     * 退出 </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="keyword">for</span> (Activity activity : mList) &#123;  </span><br><span class="line">                <span class="keyword">if</span> (activity != <span class="keyword">null</span>)  </span><br><span class="line">                    activity.finish();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());  </span><br><span class="line">            System.exit(<span class="number">0</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/** </span><br><span class="line">     * 注销 </span><br><span class="line">     */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logout</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="keyword">for</span> (Activity activity : mLogoutList) &#123;  </span><br><span class="line">                <span class="keyword">if</span> (activity != <span class="keyword">null</span>)  </span><br><span class="line">                    activity.finish();  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">            System.gc();  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLowMemory</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>.onLowMemory();  </span><br><span class="line">        System.gc();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="在需要对Activity管理的onCreate-）添加："><a href="#在需要对Activity管理的onCreate-）添加：" class="headerlink" title="在需要对Activity管理的onCreate(）添加："></a>在需要对Activity管理的onCreate(）添加：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">KYActivityMannger.getInstance().addActivity(<span class="keyword">this</span>);  </span><br><span class="line">KYActivityMannger.getInstance().addLogoutActivity(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注销不退出App</span></span><br><span class="line">KYActivityMannger.getInstance().logout();</span><br><span class="line"><span class="comment">// 退出并退出App</span></span><br><span class="line">KYActivityMannger.getInstance().exit();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Activity/" rel="tag">#Activity</a>
+          
+            <a href="/tags/Activity管理/" rel="tag">#Activity管理</a>
+          
+            <a href="/tags/finish/" rel="tag">#finish</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/07/最新的-java-正则表达式判断手机号，支持虚拟运营商170号段/" rel="next" title="最新的java正则表达式判断手机号，支持虚拟运营商170号段">
+                <i class="fa fa-chevron-left"></i> 最新的java正则表达式判断手机号，支持虚拟运营商170号段
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/10/java-计算时间差，还剩下xx天xx小时xx分xx秒/" rel="prev" title="java 计算时间差，还剩下xx天xx小时xx分xx秒">
+                java 计算时间差，还剩下xx天xx小时xx分xx秒 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -460,6 +434,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/10/Android的Activity管理/"
+           data-title="Android的Activity管理" data-url="http://kippies.cn/2016/05/10/Android的Activity管理/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -479,8 +461,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -564,6 +555,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#可能你会遇到这种场景："><span class="nav-number">1.</span> <span class="nav-text">可能你会遇到这种场景：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在需要对Activity管理的onCreate-）添加："><span class="nav-number">2.</span> <span class="nav-text">在需要对Activity管理的onCreate(）添加：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用"><span class="nav-number">3.</span> <span class="nav-text">调用</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -660,11 +662,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   

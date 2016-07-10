@@ -1,0 +1,1000 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Google Breakpad,Crash," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="开发过程中，最担心的问题就是程序崩溃，而且还不知道崩溃的原因，现在使用Google Breakpad来跟踪崩溃的位置，非常方便；由于目前使用Mac系统开发，Google Breadpad处理Android崩溃日志时需要Linux环境，借助 vagrant 可以非常方便地在Mac使用Ubuntu环境。
+
+12345678$ varant ssh$ cd /vagrant$ sudo apt-get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android使用Google Breakpad进行崩溃日志管理">
+<meta property="og:url" content="http://kippies.cn/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/index.html">
+<meta property="og:site_name" content="Michael·Liu">
+<meta property="og:description" content="开发过程中，最担心的问题就是程序崩溃，而且还不知道崩溃的原因，现在使用Google Breakpad来跟踪崩溃的位置，非常方便；由于目前使用Mac系统开发，Google Breadpad处理Android崩溃日志时需要Linux环境，借助 vagrant 可以非常方便地在Mac使用Ubuntu环境。
+
+12345678$ varant ssh$ cd /vagrant$ sudo apt-get">
+<meta property="og:updated_time" content="2016-07-10T12:05:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android使用Google Breakpad进行崩溃日志管理">
+<meta name="twitter:description" content="开发过程中，最担心的问题就是程序崩溃，而且还不知道崩溃的原因，现在使用Google Breakpad来跟踪崩溃的位置，非常方便；由于目前使用Mac系统开发，Google Breadpad处理Android崩溃日志时需要Linux环境，借助 vagrant 可以非常方便地在Mac使用Ubuntu环境。
+
+12345678$ varant ssh$ cd /vagrant$ sudo apt-get">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Michael·Liu'
+    }
+  };
+</script>
+
+  <title> Android使用Google Breakpad进行崩溃日志管理 | Michael·Liu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Michael·Liu</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">业精于勤而荒于嬉, 行成于思而毁于随</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '5xgt8vLwWSdrcE1Wpoch','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android使用Google Breakpad进行崩溃日志管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-07-10T19:33:04+08:00" content="2016-07-10">
+              2016-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/OXS/" itemprop="url" rel="index">
+                    <span itemprop="name">OXS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/" class="leancloud_visitors" data-flag-title="Android使用Google Breakpad进行崩溃日志管理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>开发过程中，最担心的问题就是程序崩溃，而且还不知道崩溃的原因，现在使用Google Breakpad来跟踪崩溃的位置，非常方便；由于目前使用Mac系统开发，Google Breadpad处理Android崩溃日志时需要Linux环境，借助 vagrant 可以非常方便地在Mac使用Ubuntu环境。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ varant ssh</span><br><span class="line">$ cd /vagrant</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install build-essential</span><br><span class="line">$ svn checkout http:<span class="comment">//google-breakpad.googlecode.com/svn/trunk/ google-breakpad-read-only</span></span><br><span class="line">$ cd google-breakpad-read-only</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
+<p>执行完上面的命令将会在<code>google-breakpad-read-only/src/processor</code>目录下生成<code>minidump_stackwalk</code>工具，用于导出crash log.<br><code>google-breakpad-read-only/src/tools/linux/dump_syms</code>目录下生成 dump_syms工具，用于导出符号文件。<br><code>google-breakpad-read-only/src/client/linux</code> 目录下生成 libbreakpad_client.a。</p>
+<a id="more"></a>
+<ul>
+<li>如果编译遇到 <code>“cc1plus: warnings being treated as errors“</code>错误，请将<code>google-breakpad-read-only/Makefile</code>文件中<code>&quot;* -Werror* &quot;</code>删除，重新编译。</li>
+<li>如果make的时候遇到 “/lib64/libc.so.6: version `GLIBC_2.14’ not found “错误，说明 glibc 没有安装，安装方法请移步：<a href="http://my.oschina.net/zhangxu0512/blog/262275" target="_blank" rel="external">http://my.oschina.net/zhangxu0512/blog/262275</a></li>
+</ul>
+<h4 id="集成-google-breakpad到Android项目中"><a href="#集成-google-breakpad到Android项目中" class="headerlink" title="集成 google-breakpad到Android项目中"></a>集成 google-breakpad到Android项目中</h4><h5 id="添加google-beakpad代码："><a href="#添加google-beakpad代码：" class="headerlink" title="添加google-beakpad代码："></a>添加google-beakpad代码：</h5><ul>
+<li><p>方法一：</p>
+<ul>
+<li>拷贝 <code>libbreakpad_client.a</code> 到 jni 目录下。</li>
+<li>打开android项目的 Android.mk文件，在 LOCAL_PATH := $(call my-dir) 下加入如下代码：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)  </span><br><span class="line">LOCAL_MODULE := breakpad_client  </span><br><span class="line">LOCAL_MODULE_FILENAME := breakpad_client  </span><br><span class="line">LOCAL_SRC_FILES := libbreakpad_client.a  </span><br><span class="line">include $(PREBUILT_STATIC_LIBRARY)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法二：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(call <span class="keyword">import</span>-<span class="keyword">module</span>,google-breakpad-read-only/android/google_breakpad)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>方法三： </p>
+<ul>
+<li>将 google-breakpad 源代码里面的src文件夹拷贝到项目的jni目录下；</li>
+<li><p>修改Android.mk文件：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    LOCAL_PATH := $(call my-dir)</span><br><span class="line">	include $(CLEAR_VARS)</span><br><span class="line">	LOCAL_MODULE := breakpad_client</span><br><span class="line">	LOCAL_CPP_EXTENSION := .cc .cpp</span><br><span class="line">	LOCAL_ARM_MODE := arm</span><br><span class="line">	LOCAL_SRC_FILES := \</span><br><span class="line">    main.cpp \</span><br><span class="line">    src/client/linux/crash_generation/crash_generation_client.cc \</span><br><span class="line">    src/client/linux/handler/exception_handler.cc \</span><br><span class="line">    src/client/linux/handler/minidump_descriptor.cc \</span><br><span class="line">    src/client/linux/<span class="built_in">log</span>/<span class="built_in">log</span>.cc \</span><br><span class="line">    src/client/linux/minidump_writer/linux_dumper.cc \</span><br><span class="line">    src/client/linux/minidump_writer/linux_ptrace_dumper.cc \</span><br><span class="line">    src/client/linux/minidump_writer/minidump_writer.cc \</span><br><span class="line">    src/client/linux/microdump_writer/microdump_writer.cc \</span><br><span class="line">    src/client/linux/dump_writer_common/ucontext_reader.cc \</span><br><span class="line">    src/client/linux/dump_writer_common/seccomp_unwinder.cc \</span><br><span class="line">    src/client/linux/dump_writer_common/thread_info.cc \</span><br><span class="line">    src/client/minidump_file_writer.cc \</span><br><span class="line">    src/common/android/breakpad_getcontext.S \</span><br><span class="line">    src/common/convert_UTF.c \</span><br><span class="line">    src/common/md5.cc \</span><br><span class="line">    src/common/string_conversion.cc \</span><br><span class="line">    src/common/linux/elfutils.cc \</span><br><span class="line">    src/common/linux/file_id.cc \</span><br><span class="line">    src/common/linux/guid_creator.cc \</span><br><span class="line">    src/common/linux/linux_libc_support.cc \</span><br><span class="line">    src/common/linux/memory_mapped_file.cc \</span><br><span class="line">    src/common/linux/safe_readlink.cc</span><br><span class="line">LOCAL_C_INCLUDES        := $(LOCAL_PATH)/src/common/android/include \</span><br><span class="line">                           $(LOCAL_PATH)/src                        </span><br><span class="line">LOCAL_C_INCLUDES += $(NDK_ROOT)/sources/cxx-stl/stlport/stlport</span><br><span class="line">LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)</span><br><span class="line">LOCAL_EXPORT_LDLIBS     := -llog</span><br><span class="line">LOCAL_LDLIBS    := -llog</span><br><span class="line">LOCAL_LDLIBS += $(NDK_ROOT)/sources/cxx-stl/stlport/libs/armeabi/libstlport_static.a</span><br><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="加入对googole-breakpad的引用："><a href="#加入对googole-breakpad的引用：" class="headerlink" title="加入对googole-breakpad的引用："></a>加入对googole-breakpad的引用：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_WHOLE_STATIC_LIBRARIES += breakpad_client</span><br></pre></td></tr></table></figure>
+<h5 id="包含搜索路径："><a href="#包含搜索路径：" class="headerlink" title="包含搜索路径："></a>包含搜索路径：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$GOOGLE_BREAKPAD_PATH/src  </span><br><span class="line">$GOOGLE_BREAKPAD_PATH/src/common/android/include</span><br></pre></td></tr></table></figure>
+<hr>
+<pre><code>本文使用的是第三种集成方法。
+</code></pre><h4 id="添加google-breakpad-的-c-代码："><a href="#添加google-breakpad-的-c-代码：" class="headerlink" title="添加google breakpad 的 c++代码："></a>添加google breakpad 的 c++代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span>   </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"com_test_crash_TestCrash.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"client/linux/handler/exception_handler.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"client/linux/handler/minidump_descriptor.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"log.h"</span></span></span><br><span class="line"></span><br><span class="line">google_breakpad::ExceptionHandler* exceptionHandler;</span><br><span class="line"></span><br><span class="line">JavaVM *jvm = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onNativeCrash</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* info)</span> </span>&#123;</span><br><span class="line">    JNIEnv *env = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> result = jvm-&gt;GetEnv((void **) &amp;env, JNI_VERSION_1_6);</span><br><span class="line">    <span class="keyword">if</span> (result != JNI_OK) &#123;</span><br><span class="line">        LOGE(<span class="string">"%s"</span>, <span class="string">"jvm-&gt;GetEnv null"</span>);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    jclass crashPinClass = env-&gt;FindClass(</span><br><span class="line">            <span class="string">"com/test/crash/TestCrash"</span>);</span><br><span class="line">    <span class="keyword">if</span> (crashPinClass == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        LOGE(<span class="string">"%s"</span>, <span class="string">"FindClass com/test/crash/TestCrash null"</span>);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    jmethodID crashReportMethod = env-&gt;GetStaticMethodID(crashPinClass,</span><br><span class="line">            <span class="string">"onNativeCrash"</span>, <span class="string">"(Ljava/lang/String;)V"</span>);</span><br><span class="line">    <span class="keyword">if</span> (crashReportMethod == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        LOGE(<span class="string">"%s"</span>, <span class="string">"GetMethod onNativeCrash null"</span>);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    jstring crashInfo = env-&gt;NewStringUTF(info);</span><br><span class="line">    env-&gt;CallStaticVoidMethod(crashPinClass, crashReportMethod, crashInfo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 崩溃回调</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DumpCallback</span><span class="params">(<span class="keyword">const</span> google_breakpad::MinidumpDescriptor&amp; descriptor,</span><br><span class="line">        <span class="keyword">void</span>* context, <span class="keyword">bool</span> succeeded)</span> </span>&#123;</span><br><span class="line">    LOGE(<span class="string">"Dump path: %s\n"</span>, descriptor.path());</span><br><span class="line">    onNativeCrash(<span class="string">""</span>);</span><br><span class="line">    return succeeded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function">jint <span class="title">JNI_OnLoad</span><span class="params">(JavaVM *vm, <span class="keyword">void</span>* <span class="comment">/*reserved*/</span>)</span> </span>&#123;</span><br><span class="line">    LOGE(<span class="string">"JNI_OnLoad"</span>);</span><br><span class="line">    jvm = vm;</span><br><span class="line">    return JNI_VERSION_1_6;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过java代码调用initial()方法传人dmp文件保存的路径</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_test_crash_TestCrash_initial</span><span class="params">(JNIEnv* env, jobject obj, jstring filepath)</span> </span>&#123;</span><br><span class="line">    LOGE(<span class="string">"The Momo native crash initial."</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *path = env-&gt;GetStringUTFChars(filepath, <span class="number">0</span>);</span><br><span class="line">    google_breakpad::<span class="function">MinidumpDescriptor <span class="title">descriptor</span><span class="params">(path)</span></span>;</span><br><span class="line">    exceptionHandler = new google_breakpad::ExceptionHandler(descriptor, NULL, DumpCallback, NULL,</span><br><span class="line">            true, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// native crash 测试代码</span></span><br><span class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_test_crash_TestCrash_crash</span><span class="params">(JNIEnv *,</span><br><span class="line">        jobject)</span> </span>&#123;</span><br><span class="line">    LOGE(<span class="string">"The test native crash."</span>);</span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">int</span>* a = (int*)(NULL);</span><br><span class="line">    *a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="编译C-代码成-so文件（步骤略），通过加载libbreakpad-client-so，调用initial-初始化之后，就开始崩溃捕获。"><a href="#编译C-代码成-so文件（步骤略），通过加载libbreakpad-client-so，调用initial-初始化之后，就开始崩溃捕获。" class="headerlink" title="编译C++代码成.so文件（步骤略），通过加载libbreakpad_client.so，调用initial()初始化之后，就开始崩溃捕获。"></a>编译C++代码成.so文件（步骤略），通过加载libbreakpad_client.so，调用initial()初始化之后，就开始崩溃捕获。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCrash</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 加载动态链接库(加载.so最好放在application中)</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.loadLibrary(<span class="string">"breakpad_client"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Error e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">initial</span><span class="params">(String filePath)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// native crash测试代码方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">crash</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解析生成的dmp文件："><a href="#解析生成的dmp文件：" class="headerlink" title="解析生成的dmp文件："></a>解析生成的dmp文件：</h4><ul>
+<li>回到ubuntu环境，建立一个Dump目录：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir Dump</span><br></pre></td></tr></table></figure>
+<p>分别将生成的.dmp文件、minidump_stackwalk、dump_syms、android项目下的obj/local/armeabi/libxxx.so库拷贝到Dump目录。</p>
+<ul>
+<li><p>特别说明：libxxx.so文件必须是obj/local/armeabi/ 文件夹下的，这个里面so文件包含了debug信息，相对lib下的so文件来说体积很大，有可能上百兆。</p>
+</li>
+<li><p>创建好的Dump文件夹路径在“个人 —&gt; ubuntu —&gt; Dump”；</p>
+</li>
+</ul>
+<h4 id="执行生成符号文件命令："><a href="#执行生成符号文件命令：" class="headerlink" title="执行生成符号文件命令："></a>执行生成符号文件命令：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /Dump  </span><br><span class="line">$ dump_syms libxxx.so &gt; libxxx.so.sym</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看libxxx.so.sym文件内容，头部会有，<code>BB0351B14DDA42A6D36FA6EA358B49D50</code> 这样的字符串：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ head -n1 libxxx.so.sym</span><br><span class="line">MODULE Linux arm BB0351B14DDA42A6D36FA6EA358B49D50 libxxx.so</span><br></pre></td></tr></table></figure>
+<h4 id="继续执行命令："><a href="#继续执行命令：" class="headerlink" title="继续执行命令："></a>继续执行命令：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p symbols/libxxx.so/BB0351B14DDA42A6D36FA6EA358B49D50/  </span><br><span class="line">$ mv libxxx.so.sym symbols/libxxx.so/BB0351B14DDA42A6D36FA6EA358B49D50/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导出崩溃堆栈信息文件( 确保.dmp文件和 symbols目录是同级的 )：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./minidump_stackwalk filename.dmp symbols &gt; crashed.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h3 id="打开-crashed-log-文件："><a href="#打开-crashed-log-文件：" class="headerlink" title="打开 crashed.log 文件："></a>打开 crashed.log 文件：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread <span class="number">0</span> (crashed)</span><br><span class="line"> <span class="number">0</span>  libxxx.so!Java_com_test_crash_TestCrash [TestCrash.cpp : <span class="number">68</span> + <span class="number">0x8</span>]</span><br><span class="line">     r0 = <span class="number">0x00000027</span>    r1 = <span class="number">0xc3dab5eb</span>    r2 = <span class="number">0x00000001</span>    r3 = <span class="number">0x00000000</span></span><br><span class="line">     r4 = <span class="number">0x0000026a</span>    r5 = <span class="number">0x12f99f20</span>    r6 = <span class="number">0x12d63e00</span>    r7 = <span class="number">0x75c4a1b0</span></span><br><span class="line">     r8 = <span class="number">0x1302b9e0</span>    r9 = <span class="number">0xb4f07800</span>   r10 = <span class="number">0x0000003a</span>   r12 = <span class="number">0xb6e98929</span></span><br><span class="line">     fp = <span class="number">0x0000003a</span>    sp = <span class="number">0xbebb8f58</span>    lr = <span class="number">0xa289aafc</span>    pc = <span class="number">0xa289ab04</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>[TestCrash.cpp : 68 + 0x8]：定位到TestCrash.cpp的 第68行，从左到右第8个字符 ，产生的崩溃。<h3 id="如果没有生成符号文件，则-crashed-log-文件中的信息如下："><a href="#如果没有生成符号文件，则-crashed-log-文件中的信息如下：" class="headerlink" title="如果没有生成符号文件，则 crashed.log 文件中的信息如下："></a>如果没有生成符号文件，则 crashed.log 文件中的信息如下：</h3></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> Thread <span class="number">0</span> (crashed) </span><br><span class="line"> <span class="number">0</span>  libxxx.so + <span class="number">0xa289ab04</span> </span><br><span class="line">     r0 = <span class="number">0x00000027</span>    r1 = <span class="number">0xc3dab5eb</span>    r2 = <span class="number">0x00000001</span>    r3 = <span class="number">0x00000000</span> </span><br><span class="line">     r4 = <span class="number">0x0000026a</span>    r5 = <span class="number">0x12f99f20</span>    r6 = <span class="number">0x12d63e00</span>    r7 = <span class="number">0x75c4a1b0</span> </span><br><span class="line">     r8 = <span class="number">0x1302b9e0</span>    r9 = <span class="number">0xb4f07800</span>   r10 = <span class="number">0x0000003a</span>   r12 = <span class="number">0xb6e98929</span> </span><br><span class="line">     fp = <span class="number">0x0000003a</span>    sp = <span class="number">0xbebb8f58</span>    lr = <span class="number">0xa289aafc</span>    pc = <span class="number">0xa289ab04</span></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">* 通过上面的信息，我们没办法直观的看出哪里导致的崩溃，所以需要使用NDK中的`arm-linux-androideabi-addr2line` 工具定位崩溃；</span><br><span class="line">* `arm-linux-androideabi-addr2line` 路径为：`$NDK_ROOT/toolchains/arm-linux-androideabi<span class="number">-4.8</span>/prebuilt/darwin-x86/bin/arm-linux-androideabi-addr2line`</span><br><span class="line">* usage: `arm-linux-androideabi-addr2line -C -f -e &lt;库路径&gt; &lt;内存地址&gt;`</span><br><span class="line"></span><br><span class="line">``` C++</span><br><span class="line">arm-linux-androideabi-addr2line -C -f -e project/test/obj/local/armeabi/libxxx.so <span class="number">0xa289ab04</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这时候就可以在终端中看到是 libxxx.so 中的哪个文件的那一行发生异常了，接下来可以使用日志追踪有问题的代码了。</li>
+</ul>
+<hr>
+<ul>
+<li>参考：<a href="http://blog.linguofeng.com/archive/2014/04/02/google-breakpad-android.html" target="_blank" rel="external">http://blog.linguofeng.com/archive/2014/04/02/google-breakpad-android.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/Google-Breakpad/" rel="tag">#Google Breakpad</a>
+          
+            <a href="/tags/Crash/" rel="tag">#Crash</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/10/OS-X下使用vagrant安装ubuntu环境/" rel="next" title="OS X下使用vagrant安装ubuntu环境">
+                <i class="fa fa-chevron-left"></i> OS X下使用vagrant安装ubuntu环境
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/"
+           data-title="Android使用Google Breakpad进行崩溃日志管理" data-url="http://kippies.cn/2016/07/10/Android使用Google-Breakpad进行崩溃日志管理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="Michael Liu" />
+          <p class="site-author-name" itemprop="name">Michael Liu</p>
+          <p class="site-description motion-element" itemprop="description">I'm Program。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/OrzMichael" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/elsdnwn121314" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#集成-google-breakpad到Android项目中"><span class="nav-number">1.</span> <span class="nav-text">集成 google-breakpad到Android项目中</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加google-beakpad代码："><span class="nav-number">1.1.</span> <span class="nav-text">添加google-beakpad代码：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加入对googole-breakpad的引用："><span class="nav-number">1.2.</span> <span class="nav-text">加入对googole-breakpad的引用：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#包含搜索路径："><span class="nav-number">1.3.</span> <span class="nav-text">包含搜索路径：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加google-breakpad-的-c-代码："><span class="nav-number">2.</span> <span class="nav-text">添加google breakpad 的 c++代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译C-代码成-so文件（步骤略），通过加载libbreakpad-client-so，调用initial-初始化之后，就开始崩溃捕获。"><span class="nav-number">3.</span> <span class="nav-text">编译C++代码成.so文件（步骤略），通过加载libbreakpad_client.so，调用initial()初始化之后，就开始崩溃捕获。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析生成的dmp文件："><span class="nav-number">4.</span> <span class="nav-text">解析生成的dmp文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行生成符号文件命令："><span class="nav-number">5.</span> <span class="nav-text">执行生成符号文件命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继续执行命令："><span class="nav-number">6.</span> <span class="nav-text">继续执行命令：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开-crashed-log-文件："><span class="nav-number"></span> <span class="nav-text">打开 crashed.log 文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果没有生成符号文件，则-crashed-log-文件中的信息如下："><span class="nav-number"></span> <span class="nav-text">如果没有生成符号文件，则 crashed.log 文件中的信息如下：</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Michael Liu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kippies"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("a8eh3A68ODTihl4ryfMJiARn-gzGzoHsz", "0XSXQO06u06pA2ACOgW1jlEe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
