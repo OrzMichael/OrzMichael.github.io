@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title><![CDATA[InterfaceDoc]]></title>
+      <url>http://kippies.cn/2016/11/13/InterfaceDoc/</url>
+      <content type="html"><![CDATA[<h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="请求地址"><a href="#请求地址" class="headerlink" title="请求地址"></a>请求地址</h2><blockquote>
+<p>base url =？</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Header、UA"><a href="#Header、UA" class="headerlink" title="Header、UA"></a>Header、UA</h2><blockquote>
+<p>encode : UTF-8;<br>UA: eg. appName + versionName + os + osVersion + versionCode + manufacturer + module<br>参数在拿不到的情况下传 Unknown</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:right">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-user-id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">用户ID</td>
+</tr>
+<tr>
+<td>x-version-name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">App版本名称 eg. 1.0.0</td>
+</tr>
+<tr>
+<td>x-version-code</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">App版本号 eg. 666</td>
+</tr>
+<tr>
+<td>x-channel</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">渠道号 eg. xiaomi</td>
+</tr>
+<tr>
+<td>x-manufacturer</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">设备厂商 eg. 华为</td>
+</tr>
+<tr>
+<td>x-model</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">设备型号 eg. Meta8</td>
+</tr>
+<tr>
+<td>x-os</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">系统类型 eg. iOS</td>
+</tr>
+<tr>
+<td>x-os-version</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">系统版本号 eg. 5.1</td>
+</tr>
+<tr>
+<td>x-screen-height</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">屏幕高度 eg. 1920</td>
+</tr>
+<tr>
+<td>x-screen-width</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">屏幕宽度 eg. 1080</td>
+</tr>
+<tr>
+<td>x-app-timezone</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">时区 eg. Asia/Shanghai</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td style="text-align:center">string</td>
+<td style="text-align:right">UA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本数据格式"><a href="#基本数据格式" class="headerlink" title="基本数据格式"></a>基本数据格式</h2><blockquote>
+<p>ec: 状态码，非200，全部认为是失败，会处理特定的错误码 eg. 10001 : token 失效；<br>em: 提示信息；<br>客户端会优先处理em，当em有内容时，不对ec做处理；<br>data：obj{} 或者 arr[]；</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line"> <span class="string">"ec"</span>: <span class="number">200</span>,</span><br><span class="line"> <span class="string">"em"</span>: <span class="string">""</span>,</span><br><span class="line"> <span class="string">"data"</span>: &#123;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><blockquote>
+<p>POST /login</p>
+</blockquote>
+<h3 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"userName"</span>:<span class="string">"a88dfa9v61ns2"</span>,</span><br><span class="line">  <span class="string">"psw"</span>:<span class="string">"a893l1jf3076c"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line"> <span class="string">"ec"</span>: <span class="number">200</span>,</span><br><span class="line"> <span class="string">"em"</span>: <span class="string">"success"</span>,</span><br><span class="line"> <span class="string">"data"</span>: &#123;</span><br><span class="line">	  <span class="string">"userId"</span>:<span class="string">"a88dfa9v61ns2"</span>,</span><br><span class="line">	  <span class="string">"nickName"</span>:<span class="string">"喷塔Q"</span>,</span><br><span class="line">	  <span class="string">"avatar"</span>:<span class="string">"https://7niu.ab.com/a8888.png"</span>,</span><br><span class="line">	  <span class="string">"mobile"</span>:<span class="string">"18866668888"</span>,</span><br><span class="line">	  <span class="string">"gender"</span>:<span class="string">"M/F"</span></span><br><span class="line">	  <span class="string">"token"</span>:<span class="string">"fdljlRldkJjlskjdfls"</span>,  <span class="comment">// 调用一次登录接口，重新生成token</span></span><br><span class="line"> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android使用Google Breakpad进行崩溃日志管理]]></title>
       <url>http://kippies.cn/2016/07/10/Android%E4%BD%BF%E7%94%A8Google-Breakpad%E8%BF%9B%E8%A1%8C%E5%B4%A9%E6%BA%83%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/</url>
       <content type="html"><![CDATA[<ul>
